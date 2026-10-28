@@ -20,6 +20,6 @@ Videos and experimental data are excluded from this work. Offline validation can
 
 ## Portable package
 
-- [ ] Assemble Bonsai 2.7.1 with installed packages, precompiled extensions, workflows and manuals.
-- [ ] Verify a fresh extraction with no SDK, Python, downloads or hardware needed for the portable check.
-- [ ] Publish the ZIP and checksum as GitHub release downloads and link them from the README.
+- [x] Assemble Bonsai 2.7.1 with installed packages, precompiled extensions, workflows and manuals.
+- [x] Verify a fresh extraction with no SDK, Python, downloads or hardware needed for the portable check.
+- [x] Publish the ZIP and checksum as GitHub release downloads and link them from the README.
