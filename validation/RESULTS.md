@@ -6,6 +6,7 @@
 |---|---|
 | Historical sources | 40 files archived; SHA256 manifest; originals unchanged |
 | Bonsai XML | 23 workflows parsed; zero out-of-range edge endpoints |
+| Standalone source snapshot | Git archive exported and source preparation rerun without the surrounding lab folder; all 40 source checksums matched |
 | Fresh environment restoration | Passed from empty runtime folder; 27 runtime packages, managed assembly files and native OpenCV checked; startup recheck exited 0 |
 | Controller compilation | Apr 10, Apr 13 and working Apr 13 copy passed without executing |
 | Historical Apr 9 compilation | Failed with surviving MvCamCtrl 0.1.0: `Image` is not a member of `IplImage`; documented compatibility discrepancy |
@@ -21,3 +22,5 @@ The synthetic input is a black radius-8 disk at four known locations in a white 
 Raw results: `offline-test-result-april10.json` and `offline-test-result-april13.json`. Local-only logs: `logs/validation-after-clean-restore.log`, `logs/clean-restore.log`, `logs/compile-candidates.log`, and `logs/mcp-*.json`.
 
 The optional ImageSta file-analysis composition and older plotter/Magnet/FLIR workflows were not certified as a running stack. Their sources and dependency clues remain archived and described in the guide.
+
+Navigation limitation: Graphify does not parse Bonsai workflow XML, and its shared NuGet node identifiers collapsed version labels from the historical ImageSta project and the new restore project. All version conclusions here were verified against the actual XML/package manifests and runtime; use `environment/Bonsai.config` and the lock file for the recovery dependencies.

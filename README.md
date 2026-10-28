@@ -104,3 +104,5 @@ These analysis workflows additionally use **Bonsai.Scripting.IronPython**. Versi
 Earlier CoreXY/plotter/Magnet workflows are retained as historical alternatives. Their older camera/Python packages are not dependencies of the recovered delta controller. Manufacturer plotter software and camera installer contents were not treated as project source.
 
 `originals/` is a source-only snapshot, `source-manifest.json` records SHA256 hashes, `WORKFLOW_AUDIT.md` contains detailed source evidence, and `controller/` is the working real-controller copy. `prepare_sources.py` regenerates working copies from the archived originals, so save intentional future edits separately before rerunning it.
+
+Private backup: [itskovpa/delta-fly-microscope-recovery](https://github.com/itskovpa/delta-fly-microscope-recovery). The MCP source used here was `itskovpa/bonsai-mcp-server` at commit `d4f9a4b0281873bcbdacdad0a510e4c4b921445a`; it remains in the ignored `tools/` folder. Runtime/package caches, MCP build files, videos and experimental data are not uploaded.
