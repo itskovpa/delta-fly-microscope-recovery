@@ -2,10 +2,17 @@
 
 Recovery prepared 28 October 2026. **Start with the offline demo. Use the separate Bonsai 2.7.1 environment in this folder.** The historical files outside this folder were preserved; videos and experimental data were not opened.
 
+## User manual
+
+[Read or download the illustrated PDF manual](manual/Delta%20robot%20fly%20tracking%20user%20manual.pdf) · [Editable Word copy](manual/Delta%20robot%20fly%20tracking%20user%20manual.docx)
+
+The eight-page manual covers offline practice, installation, camera checks, commissioning, daily operation, controls, troubleshooting and a rig configuration record. Physical procedures require commissioning of the actual rig.
+
 ## Open it now
 
 - **`Open Offline Demo.cmd`** opens Bonsai 2.7.1 and starts a synthetic camera. Press **S** to send calculated motion strings to an onscreen node, then **End** to stop that command stream. Double-click **Tracking**, then **SyntheticFly** to view the artificial image; double-click **CommandProbe** at the top level to view commands. Use **Shift+F5** to stop the whole workflow. Restart with **F5** after End.
 - **`Open Controller for Inspection.cmd`** opens the recovered real controller **without starting it**. It requires physical camera/serial hardware to run.
+- **`Open Camera Check.cmd`** opens a camera-only detector check **without starting it**. When a camera is available, F5 runs the April 13 tracking pipeline and exposes centered X/Y pixel error. This diagnostic has no serial, robot-motion or recording branch. It passed compilation; no camera was opened during recovery.
 - **`Validate-Offline.ps1`** repeats source checks, compilation, and the two synthetic tests. Close the recovery editor before rebuilding its DLL.
 
 **F5 on the real controller can immediately send `G28` and `G01 Z-263 F100`. S only gates tracking commands. End is not an emergency stop for queued robot motion.**
@@ -81,7 +88,7 @@ The active detector uses an inverse intensity threshold and the largest connecte
 - XML parsing and edge-index checks of every archived workflow; original source hashes preserved.
 - Compile-only checks of the April 10 and April 13 controllers and the recovered controller. The validator builds and compiles expression trees without invoking them or subscribing to camera/serial sources.
 - Synthetic execution of the extracted tracking and command groups from both April parameter variants: **80 frames, 8 blank frames, 72 expected commands, maximum command-value error 0**. A small distractor is below the contour-area cutoff. Assertions check the actual frame counts and every output against known disk coordinates.
-- Your `itskovpa/bonsai-mcp-server` was built successfully and used to inspect the graph and open the offline workflow without execution. No Codex/model/MCP configuration was changed.
+- An optional local Bonsai MCP server was built successfully and used to inspect the graph and open the offline workflow without execution. No Codex/model/MCP configuration was changed. This server is not required for normal operation or included in the repository.
 
 The finite self-tests replace cameras and keyboard events, remove serial/startup/recording branches, and wire the processing groups directly instead of through persistent named subjects. The interactive demo retains the historical named subjects and S/End gates. These are software signal-path tests, not a simulation of robot mechanics or a real-time performance measurement. UI capture approval timed out, so direct visual verification and actual keyboard gate behavior were not certified.
 
@@ -90,7 +97,7 @@ Results are saved in `validation/offline-test-result-april10.json` and `validati
 ## Recommission when the hardware returns
 
 1. Identify the robot/controller, firmware, mechanical workspace, emergency stop, power sequence and COM port. Verify 115200/8N2 against its controller documentation. Review the saved homing/Z commands before allowing motor power.
-2. Open `originals/camera.bonsai` with `runtime/Bonsai.exe` for the **camera-only** check first; confirm camera identity/index, resolution, exposure and image orientation. Camera indices can change with USB enumeration. Find a stable centroid on the fly and confirm blank frames produce no valid location.
+2. Use **Open Camera Check.cmd** for the camera-only detector check first. It opens without starting; double-click the **Camera Tracking Check** group, then F5 opens the camera when ready. Confirm camera identity/index, resolution, exposure, image orientation and detection. Camera indices can change with USB enumeration. Its CenteredXYErrorPx output is the X/Y offset from image center. Stop this check before opening the real controller.
 3. Disable automatic startup/motion output while measuring the setpoint, pixel scale and axis signs. Check one small movement at a time and establish bounds. The archived workflow has no software travel clamp or calibrated scale.
 4. Establish homing and command-completion handling for the actual firmware. Then test bounded, low-gain correction with a stationary target before a live fly. Measure centering error, overshoot, dropped frames and camera-to-motion latency.
 5. Add the two extra recording cameras only after the single-camera loop is reliable. With this bundled MvCamCtrl package, remove or bypass the following `Image` selector because its output already is `IplImage`; compile again before enabling the branch. Confirm codec, capture rate, timestamps and storage independently. A VideoWriter frame-rate value is a recording setting, not evidence of camera capture rate.
@@ -105,4 +112,4 @@ Earlier CoreXY/plotter/Magnet workflows are retained as historical alternatives.
 
 `originals/` is a source-only snapshot, `source-manifest.json` records SHA256 hashes, `WORKFLOW_AUDIT.md` contains detailed source evidence, and `controller/` is the working real-controller copy. `prepare_sources.py` regenerates working copies from the archived originals, so save intentional future edits separately before rerunning it.
 
-Private backup: [itskovpa/delta-fly-microscope-recovery](https://github.com/itskovpa/delta-fly-microscope-recovery). The MCP source used here was `itskovpa/bonsai-mcp-server` at commit `d4f9a4b0281873bcbdacdad0a510e4c4b921445a`; it remains in the ignored `tools/` folder. Runtime/package caches, MCP build files, videos and experimental data are not uploaded.
+Source repository and downloads: [itskovpa/delta-fly-microscope-recovery](https://github.com/itskovpa/delta-fly-microscope-recovery). Runtime/package caches, local MCP source/build files, videos and experimental data are not uploaded. MCP integration is optional and is not required to restore or run the software.

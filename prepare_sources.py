@@ -111,6 +111,57 @@ def offline_workflow(original, automatic):
     return ET.ElementTree(root)
 
 
+def camera_check_workflow(original):
+    source = ET.parse(original).getroot().find(B + "Workflow/" + B + "Nodes")
+    tracker = copy.deepcopy(source[36])
+    ET.SubElement(tracker, B + "Name").text = "Camera Tracking Check"
+    tracking = tracker.find(B + "Workflow")
+    nodes = tracking.find(B + "Nodes")
+    # Remove the disabled legacy Spinnaker source chain; CameraCapture index 0 is active.
+    for item in list(nodes)[:3]:
+        nodes.remove(item)
+    edges = tracking.find(B + "Edges")
+    for edge in list(edges):
+        a, z = int(edge.get("From")), int(edge.get("To"))
+        if a < 3 or z < 3:
+            edges.remove(edge)
+        else:
+            edge.set("From", str(a - 3))
+            edge.set("To", str(z - 3))
+
+    # The tracker outputs the centroid's X/Y error from image center here.
+    output = nodes[25]
+    output.clear()
+    output.set(XSI, "WorkflowOutput")
+    ET.SubElement(output, B + "Name").text = "CenteredXYErrorPx"
+    nodes.remove(nodes[26])
+    for edge in list(edges):
+        if edge.get("From") == "25":
+            edges.remove(edge)
+
+    camera = nodes[0].find(B + "Combinator")
+    assert camera is not None and camera.get(XSI) == "cv:CameraCapture"
+    camera_index = camera.find("{" + NS["cv"] + "}Index")
+    assert camera_index is not None and camera_index.text == "0"
+    serialized = ET.tostring(tracker, encoding="unicode")
+    for prohibited in ["SpinnakerCapture", "CreateSerialPort", "SerialString", "SerialPort",
+                       "CsvWriter", "VideoWriter", "Keyboard", "KeyDown", "KeyUp",
+                       "G28", "G01", "COM19"]:
+        assert prohibited.casefold() not in serialized.casefold(), prohibited
+    for required in ["ThresholdValue", "163", "MinArea", "20", "Centroid",
+                     "Item1-(it.Item2/2)", "CenteredXYErrorPx"]:
+        assert required in serialized, required
+
+    root = ET.Element(B + "WorkflowBuilder", {"Version": "2.7.1"})
+    ET.SubElement(root, B + "Description").text = "Camera-only tracking check; centered X/Y error in pixels."
+    graph = ET.SubElement(root, B + "Workflow")
+    output_nodes = ET.SubElement(graph, B + "Nodes")
+    output_nodes.append(tracker)
+    ET.SubElement(graph, B + "Edges")
+    ET.indent(root, space="  ")
+    return ET.ElementTree(root)
+
+
 def main():
     manifest = []
     sources = sorted(software_files()) if (ROOT / "DeltaX2Move2PashaModifyed_Last_3cameras.bonsai").is_file() else []
@@ -157,7 +208,8 @@ def main():
     assert original_text.count(old_path) == 1
     (controller / "Delta-Controller.bonsai").write_text(original_text.replace(old_path, r"recordings\commands.csv"), encoding="utf-8")
     shutil.copy2(Path(str(latest) + ".layout"), controller / "Delta-Controller.bonsai.layout")
-    print(f"Archived {len(manifest)} software files. Created controller copy and three hardware-free workflows.")
+    camera_check_workflow(latest).write(controller / "Camera-Tracking-Check.bonsai", encoding="utf-8", xml_declaration=True)
+    print(f"Archived {len(manifest)} software files. Created controller copy, three hardware-free workflows, and a camera-only check.")
 
 
 if __name__ == "__main__":

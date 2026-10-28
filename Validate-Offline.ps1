@@ -7,7 +7,7 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Offline extension build failed.' }
     & powershell.exe -NoProfile -ExecutionPolicy Bypass -File validation\Build-Validator.ps1
     if ($LASTEXITCODE -ne 0) { throw 'Validator build failed.' }
-    & validation\bin\CompileWorkflow.exe runtime originals\DeltaX2Move2PashaModifyed_Last_3cameras.bonsai originals\Bonsai\ImageSta\DeltaX2Move2PashaModifyed_Last_3cameras.bonsai controller\Delta-Controller.bonsai offline\Offline-Demo.bonsai offline\Offline-SelfTest.bonsai offline\Offline-SelfTest-Apr13.bonsai
+    & validation\bin\CompileWorkflow.exe runtime originals\DeltaX2Move2PashaModifyed_Last_3cameras.bonsai originals\Bonsai\ImageSta\DeltaX2Move2PashaModifyed_Last_3cameras.bonsai controller\Delta-Controller.bonsai controller\Camera-Tracking-Check.bonsai offline\Offline-Demo.bonsai offline\Offline-SelfTest.bonsai offline\Offline-SelfTest-Apr13.bonsai
     if ($LASTEXITCODE -ne 0) { throw 'Workflow compilation failed.' }
     foreach ($variant in @('april10','april13')) {
         & python -X utf8 validation\run_offline_test.py --variant $variant

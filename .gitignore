@@ -15,3 +15,5 @@ controller/recordings/
 offline/offline-test-result.json
 logs/*
 !logs/README.md
+manual/qa/
+manual/__pycache__/
