@@ -17,3 +17,6 @@ logs/*
 !logs/README.md
 manual/qa/
 manual/__pycache__/
+dist/
+packaging/prerequisites/
+packaging/__pycache__/

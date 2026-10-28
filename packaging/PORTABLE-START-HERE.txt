@@ -1,0 +1,43 @@
+DELTA FLY TRACKING
+Portable Bonsai 2.7.1 for 64-bit Windows
+
+1. Extract the entire ZIP into a writable local folder. Do not run it inside the ZIP.
+2. Double-click Test Portable Package.cmd and wait for both synthetic tests to pass.
+3. Double-click Open Offline Demo.cmd to learn the controls without hardware.
+4. Read manual/Delta robot fly tracking user manual.pdf before physical operation.
+
+Bonsai 2.7.1, all 27 pinned packages, native OpenCV DLLs, the compiled offline
+extension and the compiled workflow validator are already installed in this ZIP.
+Python, a .NET SDK, NuGet restoration and internet access are not required for
+normal operation or Test Portable Package.cmd.
+
+SYSTEM PREREQUISITES
+Use 64-bit Windows with .NET Framework 4.7.2 or newer. Windows 11 normally
+already provides a newer .NET Framework. Native OpenCV also needs the Microsoft
+Visual C++ v14 x64 runtime. If a native DLL cannot load, obtain that system
+runtime directly from Microsoft:
+https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist
+
+Camera USB/GigE drivers and native MVS device support must be installed separately
+on the physical rig. They are not installed by copying a Bonsai package. No
+robot or camera was used to validate this portable archive.
+
+WHAT TO OPEN
+Open Offline Demo.cmd                  Artificial camera; no robot connection.
+Open Camera Check.cmd                  Opens detector-only workflow for inspection.
+Open Controller for Inspection.cmd     Opens the real controller without starting it.
+Test Portable Package.cmd              File checks, compilation and synthetic tests.
+
+F5 on the real controller can immediately send homing and Z-movement commands.
+S only gates vision-derived commands. End and Shift+F5 do not guarantee that
+queued robot motion has stopped. Follow the rig commissioning procedure.
+
+SOURCE AND MANUAL
+https://github.com/itskovpa/delta-fly-microscope-recovery
+The ZIP contains the project source as well as the preinstalled runtime.
+Restore-Environment.ps1 and Validate-Offline.ps1 are developer/source-rebuild
+tools; use Test Portable Package.cmd for the supplied binary distribution.
+The manual's page 3 describes a source installation; skip those rebuild steps
+when using this ZIP and follow the portable steps above instead.
+PACKAGE-MANIFEST.json records the exact installed versions and file checksums.
+THIRD-PARTY-NOTICES.txt and runtime/Packages retain component metadata/licenses.

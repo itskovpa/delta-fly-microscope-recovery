@@ -1,0 +1,11 @@
+Ready-to-extract Bonsai 2.7.1 environment for 64-bit Windows.
+
+The ZIP includes all 27 installed packages, native OpenCV libraries, the compiled offline extension, controller and camera-check workflows, the synthetic demo, a no-install portable validator, source files and the illustrated PDF/Word user manual.
+
+Extract the complete ZIP, then run Test Portable Package.cmd. No Python, .NET SDK, NuGet restoration or internet connection is needed for this check or normal operation. Windows .NET Framework 4.7.2 or newer and the Microsoft Visual C++ v14 x64 system runtime are prerequisites. Physical camera drivers remain a separate rig setup step.
+
+The archive is tested after extraction into a different folder. Both synthetic variants must produce 80 frames, 8 fly-absent frames and 72 expected commands with zero command-value error. This does not validate robot mechanics or camera hardware.
+
+Use Open Offline Demo.cmd first. The real controller sends startup motion when run; Open Controller for Inspection.cmd only opens it.
+
+SHA256SUMS.txt verifies the ZIP. PACKAGE-MANIFEST.json lists the installed package versions and individual file checksums. See the README and manual for setup and commissioning instructions.

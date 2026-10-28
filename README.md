@@ -2,6 +2,14 @@
 
 Recovery prepared 28 October 2026. **Start with the offline demo. Use the separate Bonsai 2.7.1 environment in this folder.** The historical files outside this folder were preserved; videos and experimental data were not opened.
 
+## Ready to run ZIP
+
+[Download Bonsai 2.7.1 with installed dependencies for Windows x64](https://github.com/itskovpa/delta-fly-microscope-recovery/releases/download/portable-2026.10.28/DeltaFly-Bonsai-2.7.1-win-x64.zip) · [Release notes and SHA256 checksum](https://github.com/itskovpa/delta-fly-microscope-recovery/releases/tag/portable-2026.10.28)
+
+Extract the **entire** ZIP into a writable folder, run **`Test Portable Package.cmd`**, then **`Open Offline Demo.cmd`**. Bonsai, all 27 pinned packages, native OpenCV libraries and compiled test tools are already included. Normal operation and the portable check do not need Python, a .NET SDK, NuGet restoration or internet access.
+
+This is a 64-bit Windows package. Windows .NET Framework 4.7.2 or newer and the Microsoft Visual C++ v14 x64 system runtime are prerequisites. Physical camera drivers and native MVS device support must be installed separately on the rig. Use the release ZIP above; GitHub's automatically generated **Source code ZIP** does not include the installed runtime.
+
 ## User manual
 
 [Read or download the illustrated PDF manual](manual/Delta%20robot%20fly%20tracking%20user%20manual.pdf) · [Editable Word copy](manual/Delta%20robot%20fly%20tracking%20user%20manual.docx)
@@ -14,6 +22,7 @@ The eight-page manual covers offline practice, installation, camera checks, comm
 - **`Open Controller for Inspection.cmd`** opens the recovered real controller **without starting it**. It requires physical camera/serial hardware to run.
 - **`Open Camera Check.cmd`** opens a camera-only detector check **without starting it**. When a camera is available, F5 runs the April 13 tracking pipeline and exposes centered X/Y pixel error. This diagnostic has no serial, robot-motion or recording branch. It passed compilation; no camera was opened during recovery.
 - **`Validate-Offline.ps1`** repeats source checks, compilation, and the two synthetic tests. Close the recovery editor before rebuilding its DLL.
+- **`Test Portable Package.cmd`** checks file hashes and installed assemblies, compiles workflows without executing hardware, and runs both synthetic tests using the precompiled tools in the portable ZIP. It does not rebuild or download packages.
 
 **F5 on the real controller can immediately send `G28` and `G01 Z-263 F100`. S only gates tracking commands. End is not an emergency stop for queued robot motion.**
 
@@ -31,7 +40,7 @@ The newest saved controller is **`Bonsai/ImageSta/DeltaX2Move2PashaModifyed_Last
 
 ## Recreate the environment
 
-This folder already contains a restored local environment. On another Windows computer install a **.NET 8 or 9 SDK**, **Python 3**, and **.NET Framework 4.7.2 or newer**. Windows 11 normally supplies a newer Framework. Then run in PowerShell:
+These are **source-rebuild** instructions. Skip them when using the ready-to-run release ZIP. For a source checkout, install a **.NET 8 or 9 SDK**, **Python 3**, and **.NET Framework 4.7.2 or newer**. Windows 11 normally supplies a newer Framework. Then run in PowerShell:
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Restore-Environment.ps1
