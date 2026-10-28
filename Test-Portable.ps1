@@ -21,6 +21,19 @@ function Assert-Portable {
     if (-not $Condition) { throw $Message }
 }
 
+function Get-PortableSha256 {
+    param([string]$Path)
+    $algorithm = [Security.Cryptography.SHA256]::Create()
+    $stream = $null
+    try {
+        $stream = [IO.File]::OpenRead($Path)
+        return [BitConverter]::ToString($algorithm.ComputeHash($stream)).Replace('-', '')
+    } finally {
+        if ($null -ne $stream) { $stream.Dispose() }
+        $algorithm.Dispose()
+    }
+}
+
 try {
     if ($PSVersionTable.PSEdition -ne 'Desktop' -or $PSVersionTable.PSVersion -lt [Version]'5.1') {
         throw 'Run this checker with Windows PowerShell 5.1 (powershell.exe).'
@@ -112,7 +125,7 @@ try {
             Assert-Portable ($entry.sha256 -match '^[0-9A-Fa-f]{64}$') "Invalid SHA256 for '$relativePath'."
             $item = Get-Item -LiteralPath $path
             Assert-Portable ($item.Length -eq $expectedBytes) "Byte count mismatch for '$relativePath'."
-            $actualHash = (Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash
+            $actualHash = Get-PortableSha256 $path
             Assert-Portable ($actualHash -ieq [string]$entry.sha256) "SHA256 mismatch for '$relativePath'."
         }
         Write-Host "PASS manifest: $($manifestFiles.Count) file hashes verified."
