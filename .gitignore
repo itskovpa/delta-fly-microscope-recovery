@@ -1,0 +1,17 @@
+runtime/
+downloads/
+package-cache/
+package-feed/
+tools/
+tool-packages/
+**/bin/
+**/obj/
+**/.bonsai/
+*.exe.settings
+*.avi
+*.mp4
+*.csv
+controller/recordings/
+offline/offline-test-result.json
+logs/*
+!logs/README.md

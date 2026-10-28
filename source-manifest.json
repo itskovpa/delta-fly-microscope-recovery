@@ -1,0 +1,271 @@
+[
+  {
+    "path": "Bonsai/cameraComparison.bonsai",
+    "bytes": 2834,
+    "sha256": "5f9ef7ba39ad4d6133998d63e963394c4caf96a99f97cb955f6ec16054a525cf",
+    "bonsai_version": "2.5.1",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "Bonsai/cameraComparison.bonsai.layout",
+    "bytes": 2659,
+    "sha256": "fec54da6697c211e106fe8505f758a0f776c91cf27b2d1fcba19467c24a9e55d"
+  },
+  {
+    "path": "Bonsai/ImageSta/camera.bonsai",
+    "bytes": 22244,
+    "sha256": "168cd94e51cdf6a49045b7ea3ee99139337b4279a4a7e3248f89d42a52f0fb8f",
+    "bonsai_version": "2.7.1",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "Bonsai/ImageSta/camera.bonsai.layout",
+    "bytes": 22422,
+    "sha256": "c5f603060c76fcbdeabb3479870e859006d1963e46b3ec7f131c16cbe25d8540"
+  },
+  {
+    "path": "Bonsai/ImageSta/DeltaX2Move2PashaModifyed_Last_3cameras.bonsai",
+    "bytes": 42960,
+    "sha256": "5cd8f631041414b73c9af432bc8d7a46b516ae58ab3835202f4f593d97ad085b",
+    "bonsai_version": "2.7.1",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "Bonsai/ImageSta/DeltaX2Move2PashaModifyed_Last_3cameras.bonsai.layout",
+    "bytes": 29721,
+    "sha256": "3a3b57a0100e7419672dc29c9c28d953728743cf81e8f84c3960097a925630b4"
+  },
+  {
+    "path": "Bonsai/ImageSta/extensions/HeadTailGroup.bonsai",
+    "bytes": 6131,
+    "sha256": "05dc359c2f191afda21c06417ae80437628ca50382b76fd085bd5186d5e63a1c",
+    "bonsai_version": "2.6.0",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "Bonsai/ImageSta/extensions/HeadTailVisualizer.cs",
+    "bytes": 1846,
+    "sha256": "3df98d9daa04406035612b960245179ea3019285ecc60da91f881845accaace6"
+  },
+  {
+    "path": "Bonsai/ImageSta/extensions/OrientationVisualizer.bonsai",
+    "bytes": 1464,
+    "sha256": "9a05cf443ca9fe3c3062a564efeecbaf93fc9911e9a25dada87414a2aa9a2cb0",
+    "bonsai_version": "2.6.0",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "Bonsai/ImageSta/extensions/Stabilizer.bonsai",
+    "bytes": 4149,
+    "sha256": "d94de61026a3458895a056434873b773caf2f91fecb13f3257312f2ffa09ae28",
+    "bonsai_version": "2.6.0",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "Bonsai/ImageSta/extensions/ValidPoint.bonsai",
+    "bytes": 1311,
+    "sha256": "079413d291cc388b6f876843258607ef22faf3f6f83400c31cbed59677e42f8c",
+    "bonsai_version": "2.6.0",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "Bonsai/ImageSta/extensions/Zoomer.bonsai",
+    "bytes": 3027,
+    "sha256": "eddaa196b0dc957731f829143ddf9cbd8e4af8b3d84a6b2cb9c16509d8740cd4",
+    "bonsai_version": "2.6.0",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "Bonsai/ImageSta/Extensions.csproj",
+    "bytes": 361,
+    "sha256": "5071b6789d13ca58e45e150bbba2e61e01c50bcd5c878ae2b5b8445335801b9d"
+  },
+  {
+    "path": "Bonsai/ImageSta/ImageSta.bonsai",
+    "bytes": 2780,
+    "sha256": "1921ff69340b798d24d03e6bd46bca1de15f91dc202282d6729806cffb18426f",
+    "bonsai_version": "2.6.0",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "Bonsai/MagnetSetupDefault.bonsai",
+    "bytes": 23738,
+    "sha256": "8d9bcde336ecaf6f2ba7e40cf96530b8bbffc2d84e2fa1e97463895cca7a2571",
+    "bonsai_version": "2.5.1",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "Bonsai/MagnetSetupDefault.bonsai.layout",
+    "bytes": 15609,
+    "sha256": "04448ebba0400bce5132981b201578723ff63fd33c9bcb207cbfa21b809950c4"
+  },
+  {
+    "path": "Bonsai/Move DeltaX2.bonsai",
+    "bytes": 25454,
+    "sha256": "d4ae20c4c21535d23055153bf21234edd038a6c71c3e045408814972e800a522",
+    "bonsai_version": "2.6.2",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "Bonsai/Move DeltaX2.bonsai.layout",
+    "bytes": 26334,
+    "sha256": "2fe793b18b4978cfee8b5db4d8f07dbbca55cb082fcf7162cd9b98321c1f76f0"
+  },
+  {
+    "path": "Bonsai/Move plotter.bonsai",
+    "bytes": 24763,
+    "sha256": "158373eb1b6cc99c9a4eb6118bf38954eed10590b7590c11d68540b1e41baf19",
+    "bonsai_version": "2.5.1",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "Bonsai/Move plotter.bonsai.layout",
+    "bytes": 26510,
+    "sha256": "fc638fd10b5fadee5d698341fb9b7e30c5dafa76cead2322ba867fac528cc745"
+  },
+  {
+    "path": "Bonsai/TrackDotMove plotter.bonsai",
+    "bytes": 37649,
+    "sha256": "23ced72584a51e2fdf3ca5dfcfafca826f410590a6aac8102d3a0fa1a84eb231",
+    "bonsai_version": "2.5.1",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "Bonsai/TrackDotMove plotter.bonsai.layout",
+    "bytes": 25182,
+    "sha256": "fd62b11dffb9e6a063310bdc423c96cfe7b0213c8d8ae9d45744fbbd62b24963"
+  },
+  {
+    "path": "Bonsai/TrackDotMove plotter_Debug.bonsai",
+    "bytes": 30462,
+    "sha256": "d2f2003c76bd818ce778cf5ae33622cc921c9486dd765e52bcea10986d03100b",
+    "bonsai_version": "2.5.1",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "Bonsai/TrackDotMove plotter_Debug.bonsai.layout",
+    "bytes": 24324,
+    "sha256": "da9fbea121cee40fa6ac51966272e54e7c31ccc49672f37be92c9fbb0acd7e4f"
+  },
+  {
+    "path": "camera.bonsai",
+    "bytes": 1326,
+    "sha256": "5a18f083e0d78a619f3771ba1d8a272751a2e360dec955283a193074dc3d3f28",
+    "bonsai_version": "2.7.0",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "camera.bonsai.layout",
+    "bytes": 894,
+    "sha256": "540ed7a100348579d22a04bfed3ca740056359034e6b3b4915bd237370945090"
+  },
+  {
+    "path": "corexymove simple open loop.bonsai",
+    "bytes": 1645,
+    "sha256": "703729b6c94f1da7c1c529dc68503fba56468391a12da19e122330520246de3b",
+    "bonsai_version": "2.7.0",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "corexymove simple open loop.bonsai.layout",
+    "bytes": 969,
+    "sha256": "9b4aae99b7167f8a77d96903e7a253085db20d6bf48ade093cc8f2984c9fef96"
+  },
+  {
+    "path": "CoreXYMove.bonsai",
+    "bytes": 35489,
+    "sha256": "e848cc8ff2a06ab5e675edce7edb8ad838198fc043e311b3571d4ac2a6c8bb47",
+    "bonsai_version": "2.5.1",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "CoreXYMove.bonsai.layout",
+    "bytes": 34163,
+    "sha256": "864c358a303d466450ce6b56424bd6a49dd4b6fdf74b4eb12731d8352290f68d"
+  },
+  {
+    "path": "CoreXYMove_Working_adjustGain.bonsai",
+    "bytes": 35949,
+    "sha256": "a70f05bd30129cd54a48e91544590a4e8fe32d3f4a4e9a02d552f14e171cb268",
+    "bonsai_version": "2.5.1",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "CoreXYMove_Working_adjustGain.bonsai.layout",
+    "bytes": 34572,
+    "sha256": "07f12235f54f62b73f3a2a3c1a8f12cb4c91f224b1d03903734b4dae2faf698d"
+  },
+  {
+    "path": "DeltaX2Move.bonsai",
+    "bytes": 40728,
+    "sha256": "f2d9e846f6c2fe17845863cd163c0528f8cadadb1d1169b973610f702b58c8a2",
+    "bonsai_version": "2.4.0",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "DeltaX2Move.bonsai.layout",
+    "bytes": 19229,
+    "sha256": "13e3e7132e6beb2758955b73d6d7faeaa25438ccab418ffe5fadb32019e5160a"
+  },
+  {
+    "path": "DeltaX2Move2.bonsai",
+    "bytes": 40801,
+    "sha256": "865a9353f6627fad0ee480ec87894fd78c9f10db7f706666ea4c87bd5a6dc2a0",
+    "bonsai_version": "2.7.0",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "DeltaX2Move2.bonsai.layout",
+    "bytes": 28436,
+    "sha256": "e50d549a602a0c5ffcefa9f3f754af890f79469c91987042cfc8d42c40fb954f"
+  },
+  {
+    "path": "DeltaX2Move2PashaModifyed.bonsai",
+    "bytes": 40906,
+    "sha256": "aed0851c63b9cb9ab2faaacfe44aa40a2152ce82ff8f18d48d7d26a9c4ec37ad",
+    "bonsai_version": "2.7.0",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "DeltaX2Move2PashaModifyed.bonsai.layout",
+    "bytes": 28624,
+    "sha256": "f336c6ce3030a2b5487dad3ca15badaa8248624a9be339206a8315c11c86feb0"
+  },
+  {
+    "path": "DeltaX2Move2PashaModifyed_Last.bonsai",
+    "bytes": 42745,
+    "sha256": "edecaedc07cdf389d6ff0b1d72b6b3ee9b5afc20c6b178dbf311f3e714f9f78b",
+    "bonsai_version": "2.7.1",
+    "xml_valid": true,
+    "edge_errors": []
+  },
+  {
+    "path": "DeltaX2Move2PashaModifyed_Last_3cameras.bonsai",
+    "bytes": 43161,
+    "sha256": "a0969f90e38982c7eea7b24d9fc13cb335c04e79deefba0db0ae2af481bb7801",
+    "bonsai_version": "2.7.1",
+    "xml_valid": true,
+    "edge_errors": []
+  }
+]

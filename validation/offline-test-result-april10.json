@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "synthetic_frames": 80,
+  "blank_frames": 8,
+  "tracking_commands": 72,
+  "max_command_error": 0,
+  "hardware_access": false,
+  "physical_performance_validated": false,
+  "variant": "april10"
+}

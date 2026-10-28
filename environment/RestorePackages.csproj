@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Bonsai" Version="[2.7.1]" />
+    <PackageReference Include="Bonsai.Core" Version="[2.7.1]" />
+    <PackageReference Include="Bonsai.Vision" Version="[2.7.0]" />
+    <PackageReference Include="Bonsai.Vision.Design" Version="[2.7.0]" />
+    <PackageReference Include="Bonsai.System" Version="[2.7.0]" />
+    <PackageReference Include="Bonsai.System.Design" Version="[2.7.0]" />
+    <PackageReference Include="Bonsai.Windows.Input" Version="[2.7.0]" />
+    <PackageReference Include="Bonsai.Scripting.Expressions" Version="[2.7.0]" />
+    <PackageReference Include="Bonsai.Scripting.Expressions.Design" Version="[2.7.0]" />
+    <PackageReference Include="Bonsai.MvCamCtrl" Version="[0.1.0]" />
+    <PackageReference Include="MvCamCtrl.Net" Version="[4.0.0]" />
+    <PackageReference Include="OpenCV.Net" Version="[3.4.1]" />
+    <PackageReference Include="OpenCV.Net.runtime.win-x64" Version="[2.4.13]" />
+    <PackageReference Include="OpenCV.Net.runtime.win-x86" Version="[2.4.13]" />
+  </ItemGroup>
+</Project>

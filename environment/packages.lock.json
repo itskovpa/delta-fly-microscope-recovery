@@ -1,0 +1,238 @@
+{
+  "version": 1,
+  "dependencies": {
+    ".NETFramework,Version=v4.7.2": {
+      "Bonsai": {
+        "type": "Direct",
+        "requested": "[2.7.1, 2.7.1]",
+        "resolved": "2.7.1",
+        "contentHash": "BjFvT12hw/fJGuqfer/XV5Ljh/pRNg6CmjK/todohmYv5nhmO/ef/FntSMrqol762qDGd7BN6QpcaXvmarKKOw==",
+        "dependencies": {
+          "Bonsai.Core": "2.7.0",
+          "Bonsai.Design": "2.7.0",
+          "Bonsai.Editor": "2.7.1"
+        }
+      },
+      "Bonsai.Core": {
+        "type": "Direct",
+        "requested": "[2.7.1, 2.7.1]",
+        "resolved": "2.7.1",
+        "contentHash": "hLOok93Noe/WWlFAVm6gNx+NEHh8aeAqxwccmgcx/eFowARoknhu1/QBolQCT0k9D+G8LrGJUvX6kEfS3CGQow==",
+        "dependencies": {
+          "Rx-Linq": "2.2.5",
+          "Rx-PlatformServices": "2.2.5"
+        }
+      },
+      "Bonsai.MvCamCtrl": {
+        "type": "Direct",
+        "requested": "[0.1.0, 0.1.0]",
+        "resolved": "0.1.0",
+        "contentHash": "JOpBo3zH8fGRmEpZQy7FRMSI1EeXMcaEOuko+9WEEdw0NjEzZebxlwvSa2qKGWrP4Q84yTGvujJ1y5/G/Jdx5w==",
+        "dependencies": {
+          "Bonsai.Core": "2.7.1",
+          "MvCamCtrl.Net": "4.0.0",
+          "OpenCV.Net": "3.4.1"
+        }
+      },
+      "Bonsai.Scripting.Expressions": {
+        "type": "Direct",
+        "requested": "[2.7.0, 2.7.0]",
+        "resolved": "2.7.0",
+        "contentHash": "BER2A7h9J5wiMrEdpuW3BcMctLqEY14O7s1JkMhIwklt4RYRWw7Q7ln9x72NyQ4HmDQV1eQCeRo58t5zF5aO6A==",
+        "dependencies": {
+          "Bonsai.Core": "2.7.0",
+          "System.Linq.Dynamic": "1.0.7"
+        }
+      },
+      "Bonsai.Scripting.Expressions.Design": {
+        "type": "Direct",
+        "requested": "[2.7.0, 2.7.0]",
+        "resolved": "2.7.0",
+        "contentHash": "xhvw1IyGD2GoH43zZ4WyZjhr6B6oPLsnS1hP3n8KPakhyoASybyS2Wl4ySSF2KuKj55U10QDMMO6vM9pLOuU3g==",
+        "dependencies": {
+          "Bonsai.Scripting.Expressions": "2.7.0",
+          "jacobslusser.ScintillaNET": "3.6.3"
+        }
+      },
+      "Bonsai.System": {
+        "type": "Direct",
+        "requested": "[2.7.0, 2.7.0]",
+        "resolved": "2.7.0",
+        "contentHash": "jQ9TnZJy3qD9a6HZsKt/jVmamiB/qdGe1v7wRzh8AFP6+4n9+OjKmUz+0iy5GO27APJS63yAe7pM9kQqlww6sA==",
+        "dependencies": {
+          "Bonsai.Core": "2.7.0"
+        }
+      },
+      "Bonsai.System.Design": {
+        "type": "Direct",
+        "requested": "[2.7.0, 2.7.0]",
+        "resolved": "2.7.0",
+        "contentHash": "L3vKyZjZLx8iiizE4zKOsD2/y+FdbR1b0k2QgcZXnPYuJTQBnIMiQypfsLWzZWbXCNygn//6vhn7l+v6W+B/jA==",
+        "dependencies": {
+          "Bonsai.Design": "2.7.0",
+          "Bonsai.System": "2.7.0"
+        }
+      },
+      "Bonsai.Vision": {
+        "type": "Direct",
+        "requested": "[2.7.0, 2.7.0]",
+        "resolved": "2.7.0",
+        "contentHash": "F4P4zC3i7qcwLpWZ04dSQ0CCbWT+nEE5B9I2435lgpkj8CxNglalqo7gtdhmIuU2+38aGWn1Aghswe1OCnsuTQ==",
+        "dependencies": {
+          "Bonsai.Dsp": "2.7.0",
+          "Bonsai.System": "2.7.0",
+          "OpenCV.Net": "3.4.1"
+        }
+      },
+      "Bonsai.Vision.Design": {
+        "type": "Direct",
+        "requested": "[2.7.0, 2.7.0]",
+        "resolved": "2.7.0",
+        "contentHash": "4o8o4YQtAKiqtSXPlwjCsoRe8r/9c2bZR8hY82XEbI2bjlrxYrL4Iq4Cbk9TyqAPLiyfDp1sCHCs/Ya8Cggskw==",
+        "dependencies": {
+          "Bonsai.Design.Visualizers": "2.7.0",
+          "Bonsai.Vision": "2.7.0",
+          "OpenTK.GLControl": "3.1.0"
+        }
+      },
+      "Bonsai.Windows.Input": {
+        "type": "Direct",
+        "requested": "[2.7.0, 2.7.0]",
+        "resolved": "2.7.0",
+        "contentHash": "ooNnIaP471XzACr9TA5UM71yyna5SbfJRSB9Xv5tKNJPswuN/Jj2ikw5LCmo0jxHy8NTWjBAJsLF/e8BfZcAJg==",
+        "dependencies": {
+          "Bonsai.Core": "2.7.0"
+        }
+      },
+      "MvCamCtrl.Net": {
+        "type": "Direct",
+        "requested": "[4.0.0, 4.0.0]",
+        "resolved": "4.0.0",
+        "contentHash": "N+JVng+Gehmmn492JgF5Vu/f4LszgZiAC+fZcp1DKG7myCXCJzQspA0pzZO5NLE1LDRV5CbwOTkJ+RiE0pSJ7Q=="
+      },
+      "OpenCV.Net": {
+        "type": "Direct",
+        "requested": "[3.4.1, 3.4.1]",
+        "resolved": "3.4.1",
+        "contentHash": "rZDrKsBVWv9UQMOQNmrqAGH8friD96zWoyqxhnkpAQbkuvyMXk21eAPe7sxPNbeX3h8HPWenA2GotBPFN5nJ+A=="
+      },
+      "OpenCV.Net.runtime.win-x64": {
+        "type": "Direct",
+        "requested": "[2.4.13, 2.4.13]",
+        "resolved": "2.4.13",
+        "contentHash": "HADj9NlvoW2uyJInjhCa0Dnhw2+k3THjeAU/DBlvqvmKvJ9Cmdyrp/jrQcEpBytXW9bPPuY81i1H2Yw151feOw=="
+      },
+      "OpenCV.Net.runtime.win-x86": {
+        "type": "Direct",
+        "requested": "[2.4.13, 2.4.13]",
+        "resolved": "2.4.13",
+        "contentHash": "TtoWKcZ6I9whwOC4OJ3vSgNloDJ2bm6VYzWbrMqJJ7d9i5gI94eBTFxWr9hzqwGhNYFBdYNYy1wvVYL3Ac3MbQ=="
+      },
+      "Bonsai.Design": {
+        "type": "Transitive",
+        "resolved": "2.7.0",
+        "contentHash": "CPyVIjTVjSSRcWRCDQHyi0g5g3Z/eKZ8b9Mg6YJsVz/qxxt4ay2/kgbqt6snXd2LqYMMkNN7ks7g27ihNxCHcw==",
+        "dependencies": {
+          "Bonsai.Core": "2.7.0"
+        }
+      },
+      "Bonsai.Design.Visualizers": {
+        "type": "Transitive",
+        "resolved": "2.7.0",
+        "contentHash": "WZStzh9vSDtosBOpkMDqfXcfav4CThsiuRl9wneZUuDZ1zuUtTHqf8hCuyi+I1GhnlcqmWBRiUIQEGlMRLCfsQ==",
+        "dependencies": {
+          "Bonsai.Design": "2.7.0",
+          "ZedGraph": "5.1.7"
+        }
+      },
+      "Bonsai.Dsp": {
+        "type": "Transitive",
+        "resolved": "2.7.0",
+        "contentHash": "FAGebL+5LQ/79v0jqZbtdwUEKNgLvso5enq/rlJ+N4k36pNq533WCe6FiMKmFX5WbdczrmyUbbKJW8q2MGd2ag==",
+        "dependencies": {
+          "Bonsai.System": "2.7.0",
+          "OpenCV.Net": "3.4.1"
+        }
+      },
+      "Bonsai.Editor": {
+        "type": "Transitive",
+        "resolved": "2.7.1",
+        "contentHash": "74ZawqKJ9I2Q9rRExxTUMksKMcWeNS/zhl1cdstPXESjrk4V8wskipKsMsuHNFAQXPBd0gB6av+4IEKEjTwjsA==",
+        "dependencies": {
+          "Bonsai.Design": "2.7.0",
+          "SvgNet": "3.2.0",
+          "YamlDotNet": "12.0.2"
+        }
+      },
+      "jacobslusser.ScintillaNET": {
+        "type": "Transitive",
+        "resolved": "3.6.3",
+        "contentHash": "lERpP3K4x1ge5sW5eG+Yhv9sEFF4MDiHd/nuXTu/xSgPGODQo7K8hCEivqulrFypzFPZ+TsLDZoqucmi5blbdg=="
+      },
+      "OpenTK": {
+        "type": "Transitive",
+        "resolved": "3.1.0",
+        "contentHash": "xoP5kb81lRSY5RzbntaFA9yXK+aGF5SLShhns55MyZtxtNafIxRH5KvRTFss/N653brTzE+AfepjKsbMexYlBQ=="
+      },
+      "OpenTK.GLControl": {
+        "type": "Transitive",
+        "resolved": "3.1.0",
+        "contentHash": "BjDzF+MhJd2LaZYzkXmgkzzXgHAko/Iur4rGy6+DPdZA1Jcc0X6jXZ6QsUsjlLRNzgevO7uAj2h1TqX7sguaYg==",
+        "dependencies": {
+          "OpenTK": "3.1.0"
+        }
+      },
+      "Rx-Core": {
+        "type": "Transitive",
+        "resolved": "2.2.5",
+        "contentHash": "DfWVTfW6tvRkkqpnRHKxPIvaRZyDJGADuqrE6J2nwejOQbLRWi0rNUwXkViDWz++25BGDy3iRE5OE6Dv8mJxYQ==",
+        "dependencies": {
+          "Rx-Interfaces": "2.2.5"
+        }
+      },
+      "Rx-Interfaces": {
+        "type": "Transitive",
+        "resolved": "2.2.5",
+        "contentHash": "FKtG2QfMIeUcfB7r3a89VoAiszX3DTvYETkpC6U0FzWpxRK/mcHyzYOsniDfag+NsDG0P1k1c8yNSefXKp3t2A=="
+      },
+      "Rx-Linq": {
+        "type": "Transitive",
+        "resolved": "2.2.5",
+        "contentHash": "UTeCIu3cWPExxmTzdiVq7SalqTBhUaomBTaAC9LpYPoAopjlFwA3hjVWXoLkGlDc/44wqJemJuEwFP00KphiFg==",
+        "dependencies": {
+          "Rx-Core": "2.2.5",
+          "Rx-Interfaces": "2.2.5"
+        }
+      },
+      "Rx-PlatformServices": {
+        "type": "Transitive",
+        "resolved": "2.2.5",
+        "contentHash": "pMnNEvJVjT+wuDib+W/bi5hhIYcre7dW5yxvKrJxnR4iKJ1VLA/dY2FTtjDriHGx7OeGn12lQewXlH2oHiWFPA==",
+        "dependencies": {
+          "Rx-Core": "2.2.5",
+          "Rx-Interfaces": "2.2.5"
+        }
+      },
+      "SvgNet": {
+        "type": "Transitive",
+        "resolved": "3.2.0",
+        "contentHash": "wCgEKeyTVI202oX8TMiO4tr4IxgEPUStsFRts+dpcvwCEnykNyfOKCv15ABbC5uLsJHDI9gXXC6jnTZstrWXsA=="
+      },
+      "System.Linq.Dynamic": {
+        "type": "Transitive",
+        "resolved": "1.0.7",
+        "contentHash": "BxEYab1SCgaqElLv57DrfPyi3ksK1Pbk5eXfwkXRZOdlC4aFT03QRkPEbYFBnFPnxhoLlc/Rg2b8vL0ffYSYWA=="
+      },
+      "YamlDotNet": {
+        "type": "Transitive",
+        "resolved": "12.0.2",
+        "contentHash": "IFj2oDZYJIv5sM8mqaj5edVrpgUyoXk/wCGqZQJrgys/0tBajajpjRSgFM+iA/9ILOfTsPYKtcDcwvqBnBcNIg=="
+      },
+      "ZedGraph": {
+        "type": "Transitive",
+        "resolved": "5.1.7",
+        "contentHash": "TcZaInxUjYMJDWIaYvs/CgpssfVJQMqiry8GPP70klyheP4tYSQXFWi5HYwJvqao+epeUu3bsk3yDb3Nf/hVWw=="
+      }
+    }
+  }
+}

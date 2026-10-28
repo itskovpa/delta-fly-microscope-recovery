@@ -1,0 +1,594 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkflowBuilder Version="2.5.1"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:io="clr-namespace:Bonsai.IO;assembly=Bonsai.System"
+                 xmlns:p1="clr-namespace:Bonsai.uEye;assembly=Bonsai.uEye"
+                 xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
+                 xmlns:scr="clr-namespace:Bonsai.Scripting;assembly=Bonsai.Scripting"
+                 xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
+                 xmlns:p2="clr-namespace:Bonsai.Numerics;assembly=Bonsai.Numerics"
+                 xmlns:wie="clr-namespace:Bonsai.Windows.Input;assembly=Bonsai.Windows.Input"
+                 xmlns:dsp="clr-namespace:Bonsai.Dsp;assembly=Bonsai.Dsp"
+                 xmlns="https://bonsai-rx.org/2018/workflow">
+  <Workflow>
+    <Nodes>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="io:CreateSerialPort">
+          <io:Name>MagnetCOM</io:Name>
+          <io:PortName>COM4</io:PortName>
+          <io:BaudRate>115200</io:BaudRate>
+          <io:Parity>None</io:Parity>
+          <io:ParityReplace>63</io:ParityReplace>
+          <io:DataBits>8</io:DataBits>
+          <io:StopBits>One</io:StopBits>
+          <io:Handshake>None</io:Handshake>
+          <io:DiscardNull>false</io:DiscardNull>
+          <io:DtrEnable>false</io:DtrEnable>
+          <io:RtsEnable>false</io:RtsEnable>
+          <io:ReadBufferSize>4096</io:ReadBufferSize>
+          <io:WriteBufferSize>2048</io:WriteBufferSize>
+          <io:ReceivedBytesThreshold>1</io:ReceivedBytesThreshold>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="io:SerialStringRead">
+          <io:PortName>MagnetCOM</io:PortName>
+          <io:NewLine>\n</io:NewLine>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="p1:uEyeCapture">
+          <p1:DeviceId>1</p1:DeviceId>
+          <p1:ConfigFile>ueyeParameters808x808center75fps.ini</p1:ConfigFile>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="MemberSelector">
+        <Selector>Image</Selector>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:VideoWriter">
+          <cv:FileName>OpenLoopCircle.avi</cv:FileName>
+          <cv:Suffix>Timestamp</cv:Suffix>
+          <cv:Buffered>true</cv:Buffered>
+          <cv:Overwrite>false</cv:Overwrite>
+          <cv:FourCC>FMP4</cv:FourCC>
+          <cv:FrameRate>75</cv:FrameRate>
+          <cv:FrameSize>
+            <cv:Width>0</cv:Width>
+            <cv:Height>0</cv:Height>
+          </cv:FrameSize>
+          <cv:ResizeInterpolation>NearestNeighbor</cv:ResizeInterpolation>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>GenerateBinaryObjects</Name>
+        <Description>Tresholds the camera image after some treatment and outputs the binary objects of the flies and/or magnet. It outputs the region in decrescent order of size</Description>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="cv:Crop">
+                <cv:RegionOfInterest>
+                  <cv:X>236</cv:X>
+                  <cv:Y>108</cv:Y>
+                  <cv:Width>808</cv:Width>
+                  <cv:Height>808</cv:Height>
+                </cv:RegionOfInterest>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="cv:WarpPerspective">
+                <cv:Source>
+                  <cv:Point2f>
+                    <cv:X>28.6166668</cv:X>
+                    <cv:Y>39.57945</cv:Y>
+                  </cv:Point2f>
+                  <cv:Point2f>
+                    <cv:X>30.3</cv:X>
+                    <cv:Y>795.450439</cv:Y>
+                  </cv:Point2f>
+                  <cv:Point2f>
+                    <cv:X>790.6055</cv:X>
+                    <cv:Y>789.6583</cv:Y>
+                  </cv:Point2f>
+                  <cv:Point2f>
+                    <cv:X>784.994446</cv:X>
+                    <cv:Y>32.8219833</cv:Y>
+                  </cv:Point2f>
+                </cv:Source>
+                <cv:Destination>
+                  <cv:Point2f>
+                    <cv:X>0</cv:X>
+                    <cv:Y>0</cv:Y>
+                  </cv:Point2f>
+                  <cv:Point2f>
+                    <cv:X>0</cv:X>
+                    <cv:Y>808</cv:Y>
+                  </cv:Point2f>
+                  <cv:Point2f>
+                    <cv:X>808</cv:X>
+                    <cv:Y>808</cv:Y>
+                  </cv:Point2f>
+                  <cv:Point2f>
+                    <cv:X>808</cv:X>
+                    <cv:Y>0</cv:Y>
+                  </cv:Point2f>
+                </cv:Destination>
+                <cv:Flags>Linear</cv:Flags>
+                <cv:FillValue>
+                  <cv:Val0>0</cv:Val0>
+                  <cv:Val1>0</cv:Val1>
+                  <cv:Val2>0</cv:Val2>
+                  <cv:Val3>0</cv:Val3>
+                </cv:FillValue>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="cv:Threshold">
+                <cv:ThresholdValue>47</cv:ThresholdValue>
+                <cv:MaxValue>255</cv:MaxValue>
+                <cv:ThresholdType>BinaryInv</cv:ThresholdType>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Disable">
+              <Builder xsi:type="Combinator">
+                <Combinator xsi:type="cv:MorphologicalOperator">
+                  <cv:Size>
+                    <cv:Width>3</cv:Width>
+                    <cv:Height>3</cv:Height>
+                  </cv:Size>
+                  <cv:Anchor>
+                    <cv:X>1</cv:X>
+                    <cv:Y>1</cv:Y>
+                  </cv:Anchor>
+                  <cv:Shape>Rectangle</cv:Shape>
+                  <cv:Iterations>1</cv:Iterations>
+                  <cv:Operation>Erode</cv:Operation>
+                </Combinator>
+              </Builder>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="cv:FindContours">
+                <cv:Mode>External</cv:Mode>
+                <cv:Method>ChainApproxNone</cv:Method>
+                <cv:Offset>
+                  <cv:X>0</cv:X>
+                  <cv:Y>0</cv:Y>
+                </cv:Offset>
+                <cv:MinArea>35</cv:MinArea>
+                <cv:MaxArea xsi:nil="true" />
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="cv:BinaryRegionAnalysis" />
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="cv:SortBinaryRegions" />
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
+            <Edge From="2" To="3" Label="Source1" />
+            <Edge From="3" To="4" Label="Source1" />
+            <Edge From="4" To="5" Label="Source1" />
+            <Edge From="5" To="6" Label="Source1" />
+            <Edge From="6" To="7" Label="Source1" />
+            <Edge From="7" To="8" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="scr:PythonTransform">
+        <scr:Name>Centroids</scr:Name>
+        <scr:Description>Extract Fly and Magnet Centroids *Item1=Fly;Item2=Magnet'</scr:Description>
+        <scr:Script>import clr
+clr.AddReference("OpenCV.Net")
+clr.AddReference("Bonsai.Vision")
+from Bonsai.Vision import ConnectedComponent
+from System import Tuple
+from OpenCV.Net import CV, Scalar, Size, Point2f
+from math import sin, cos, pi, isnan, sqrt
+
+@returns (Tuple[Point2f,Point2f])
+def process(value):
+  listFlies = value  #.Item1
+  Fly = Point2f(0,0)
+  Magnet= Point2f(0,0)
+  
+  if (len(listFlies) &gt;= 2):
+    Obj1 = listFlies[0]
+    Obj2 = listFlies[1]
+    if (Obj1.MajorAxisLength/Obj1.MinorAxisLength &gt; Obj2.MajorAxisLength/Obj2.MinorAxisLength):
+      Fly = Obj1
+      Magnet = Obj2
+    else:
+      Fly = Obj2
+      Magnet = Obj1
+  elif (len(listFlies) == 1):
+    Fly = listFlies[0]
+    Magnet = listFlies[0]
+  return Tuple.Create(Fly.Centroid,Magnet.Centroid) 
+</scr:Script>
+      </Expression>
+      <Expression xsi:type="scr:PythonTransform">
+        <scr:Name>Orientation</scr:Name>
+        <scr:Description>Extract Fly and Magnet Centroids *Item1=Fly;Item2=Magnet'</scr:Description>
+        <scr:Script>import clr
+clr.AddReference("OpenCV.Net")
+clr.AddReference("Bonsai.Vision")
+from Bonsai.Vision import ConnectedComponent
+from System import Tuple
+from OpenCV.Net import CV, Scalar, Size, Point2f
+from math import sin, cos, pi, isnan, sqrt, degrees
+
+@returns (float)
+def process(value):
+  listFlies = value  #.Item1
+  Fly = Point2f(0,0)
+  orientation = float('nan')
+  
+  if (len(listFlies) &gt;= 2):
+    Obj1 = listFlies[0]
+    Obj2 = listFlies[1]
+    if (Obj1.MajorAxisLength/Obj1.MinorAxisLength &gt; Obj2.MajorAxisLength/Obj2.  MinorAxisLength):
+      Fly = Obj1
+      orientation = Fly.Orientation
+    else:
+      Fly = Obj2
+      orientation = Fly.Orientation
+  elif (len(listFlies) == 1):
+    Fly = listFlies[0]
+    orientation = Fly.Orientation
+  return  degrees(Fly.Orientation)
+</scr:Script>
+      </Expression>
+      <Expression xsi:type="scr:PythonTransform">
+        <scr:Name>Distance</scr:Name>
+        <scr:Description>Calculates the distance between centroids</scr:Description>
+        <scr:Script>import clr
+clr.AddReference("OpenCV.Net")
+clr.AddReference("Bonsai.Vision")
+from Bonsai.Vision import ConnectedComponent
+from System import Tuple
+from OpenCV.Net import CV, Scalar, Size, Point2f
+from math import sin, cos, pi, isnan, sqrt
+
+
+
+#def load():
+#  previous.Centroid = Point2f(700,200)
+    
+
+@returns (float)
+def process(value):
+  listFlies = value  #.Item1
+  lenght = Point2f(0,0)
+  distance = float('nan')
+  
+  if (len(listFlies) &gt;= 2):
+    Fly = listFlies[0]
+    Magnet = listFlies[1]
+    lenght = (Fly.Centroid - Magnet.Centroid)
+    distance = Fly.MajorAxisLength-Fly.MinorAxisLength #(lenght.X * lenght.X + lenght.Y * lenght.Y)
+  elif (len(listFlies) == 1):
+    distance = 0.0
+  return sqrt(distance) 
+#  if (distance &lt; (value.Item2 * value.Item2)):
+#    return True 
+#  else:
+#    return False</scr:Script>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Zip" />
+      </Expression>
+      <Expression xsi:type="SubscribeSubject">
+        <Name>IssueOrderMagnet</Name>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="io:SerialStringWrite">
+          <io:PortName>MagnetCOM</io:PortName>
+          <io:NewLine>\n</io:NewLine>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:CombineLatest" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Sample" />
+      </Expression>
+      <Expression xsi:type="io:CsvWriter">
+        <io:FileName>OpenLoopCircle.txt</io:FileName>
+        <io:ListSeparator />
+        <io:Append>false</io:Append>
+        <io:Overwrite>false</io:Overwrite>
+        <io:Suffix>Timestamp</io:Suffix>
+        <io:IncludeHeader>true</io:IncludeHeader>
+        <io:Selector />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Timer">
+          <rx:DueTime>PT0S</rx:DueTime>
+          <rx:Period>PT0.05S</rx:Period>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>ZigzagSinusoidalGenerator1</Name>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="FloatProperty">
+                <Value>0.18</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:Accumulate" />
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="p2:Cos" />
+            </Expression>
+            <Expression xsi:type="Multiply">
+              <Operand xsi:type="DoubleProperty">
+                <Value>10</Value>
+              </Operand>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="FloatProperty">
+                <Value>0.02</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="rx:Accumulate" />
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="p2:Cos" />
+            </Expression>
+            <Expression xsi:type="Multiply">
+              <Operand xsi:type="DoubleProperty">
+                <Value>30</Value>
+              </Operand>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Zip" />
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="0" To="5" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
+            <Edge From="2" To="3" Label="Source1" />
+            <Edge From="3" To="4" Label="Source1" />
+            <Edge From="4" To="9" Label="Source2" />
+            <Edge From="5" To="6" Label="Source1" />
+            <Edge From="6" To="7" Label="Source1" />
+            <Edge From="7" To="8" Label="Source1" />
+            <Edge From="8" To="9" Label="Source1" />
+            <Edge From="9" To="10" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>BuildMoveCommandAbsolute</Name>
+        <Description>Receives X and Y and retrieves a command to move the magnet</Description>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="scr:ExpressionTransform">
+              <scr:Name>BuildMoveCommandAbsolute</scr:Name>
+              <scr:Description />
+              <scr:Expression>"G21 G90 X" + Item1.ToString() + " Y" + Item2.ToString()</scr:Expression>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="MulticastSubject">
+        <Name>IssueOrderMagnet</Name>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>ResetMagnetPosition</Name>
+        <Description>Resets magnet position into the original position before the experiment (into the origin)</Description>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>G21 G90 X0 Y0</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="MulticastSubject">
+              <Name>IssueOrderMagnet</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Take">
+                <rx:Count>1</rx:Count>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
+            <Edge From="2" To="3" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Timer">
+          <rx:DueTime>PT30S</rx:DueTime>
+          <rx:Period>PT0S</rx:Period>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:TakeUntil" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Timer">
+          <rx:DueTime>PT5S</rx:DueTime>
+          <rx:Period>PT0.15S</rx:Period>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="GroupWorkflow">
+        <Name>SetInitialPositionAsOrigin</Name>
+        <Description>Sets the initial position of the magnet as the origin.</Description>
+        <Workflow>
+          <Nodes>
+            <Expression xsi:type="WorkflowInput">
+              <Name>Source1</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="StringProperty">
+                <Value>G21 G92 X0 Y0</Value>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="BehaviorSubject">
+              <Name>IssueOrderMagnet</Name>
+            </Expression>
+            <Expression xsi:type="Combinator">
+              <Combinator xsi:type="rx:Take">
+                <rx:Count>2</rx:Count>
+              </Combinator>
+            </Expression>
+            <Expression xsi:type="WorkflowOutput" />
+          </Nodes>
+          <Edges>
+            <Edge From="0" To="1" Label="Source1" />
+            <Edge From="1" To="2" Label="Source1" />
+            <Edge From="2" To="3" Label="Source1" />
+            <Edge From="3" To="4" Label="Source1" />
+          </Edges>
+        </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="wie:KeyDown">
+          <wie:Filter>Space</wie:Filter>
+          <wie:SuppressRepetitions>false</wie:SuppressRepetitions>
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:TakeUntil" />
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="rx:Concat" />
+      </Expression>
+      <Expression xsi:type="Disable">
+        <Builder xsi:type="GroupWorkflow">
+          <Name>CircleMovement Generator</Name>
+          <Workflow>
+            <Nodes>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="FloatProperty">
+                  <Value>25</Value>
+                </Combinator>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="dsp:Buffer">
+                  <dsp:Count>1</dsp:Count>
+                  <dsp:Skip>1</dsp:Skip>
+                </Combinator>
+              </Expression>
+              <Expression xsi:type="WorkflowInput">
+                <Name>Source1</Name>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="FloatProperty">
+                  <Value>0.05</Value>
+                </Combinator>
+              </Expression>
+              <Expression xsi:type="rx:Accumulate" />
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="dsp:Buffer">
+                  <dsp:Count>1</dsp:Count>
+                  <dsp:Skip>1</dsp:Skip>
+                </Combinator>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="rx:CombineLatest" />
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="dsp:PolarToCart">
+                  <dsp:AngleInDegrees>false</dsp:AngleInDegrees>
+                </Combinator>
+              </Expression>
+              <Expression xsi:type="MemberSelector">
+                <Selector>Item1</Selector>
+              </Expression>
+              <Expression xsi:type="scr:ExpressionTransform">
+                <scr:Expression>it[0]</scr:Expression>
+              </Expression>
+              <Expression xsi:type="MemberSelector">
+                <Selector>Val0</Selector>
+              </Expression>
+              <Expression xsi:type="MemberSelector">
+                <Selector>Item2</Selector>
+              </Expression>
+              <Expression xsi:type="scr:ExpressionTransform">
+                <scr:Expression>it[0]</scr:Expression>
+              </Expression>
+              <Expression xsi:type="MemberSelector">
+                <Selector>Val0</Selector>
+              </Expression>
+              <Expression xsi:type="Combinator">
+                <Combinator xsi:type="rx:Zip" />
+              </Expression>
+              <Expression xsi:type="WorkflowOutput" />
+            </Nodes>
+            <Edges>
+              <Edge From="0" To="1" Label="Source1" />
+              <Edge From="1" To="6" Label="Source1" />
+              <Edge From="2" To="3" Label="Source1" />
+              <Edge From="3" To="4" Label="Source1" />
+              <Edge From="4" To="5" Label="Source1" />
+              <Edge From="5" To="6" Label="Source2" />
+              <Edge From="6" To="7" Label="Source1" />
+              <Edge From="7" To="8" Label="Source1" />
+              <Edge From="7" To="11" Label="Source1" />
+              <Edge From="8" To="9" Label="Source1" />
+              <Edge From="9" To="10" Label="Source1" />
+              <Edge From="10" To="14" Label="Source1" />
+              <Edge From="11" To="12" Label="Source1" />
+              <Edge From="12" To="13" Label="Source1" />
+              <Edge From="13" To="14" Label="Source2" />
+              <Edge From="14" To="15" Label="Source1" />
+            </Edges>
+          </Workflow>
+        </Builder>
+      </Expression>
+    </Nodes>
+    <Edges>
+      <Edge From="2" To="3" Label="Source1" />
+      <Edge From="3" To="4" Label="Source1" />
+      <Edge From="4" To="5" Label="Source1" />
+      <Edge From="5" To="6" Label="Source1" />
+      <Edge From="5" To="7" Label="Source1" />
+      <Edge From="5" To="8" Label="Source1" />
+      <Edge From="6" To="9" Label="Source1" />
+      <Edge From="7" To="9" Label="Source2" />
+      <Edge From="8" To="9" Label="Source3" />
+      <Edge From="9" To="12" Label="Source1" />
+      <Edge From="9" To="13" Label="Source2" />
+      <Edge From="10" To="11" Label="Source1" />
+      <Edge From="10" To="12" Label="Source2" />
+      <Edge From="12" To="13" Label="Source1" />
+      <Edge From="13" To="14" Label="Source1" />
+      <Edge From="15" To="16" Label="Source1" />
+      <Edge From="16" To="17" Label="Source1" />
+      <Edge From="17" To="18" Label="Source1" />
+      <Edge From="18" To="21" Label="Source1" />
+      <Edge From="19" To="26" Label="Source4" />
+      <Edge From="20" To="21" Label="Source2" />
+      <Edge From="21" To="25" Label="Source1" />
+      <Edge From="22" To="23" Label="Source1" />
+      <Edge From="23" To="26" Label="Source2" />
+      <Edge From="24" To="25" Label="Source2" />
+      <Edge From="25" To="26" Label="Source3" />
+    </Edges>
+  </Workflow>
+</WorkflowBuilder>
